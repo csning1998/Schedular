@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/fragment_schedule.xml -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_schedule"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!-- 橫向捲動容器 -->
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- 垂直捲動容器 -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/vertical_scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <!-- 整體內容：左側時段 + 右側七天 -->
+            <LinearLayout
+                android:id="@+id/layout_whole_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <!-- 左側：時段列表 -->
+                <LinearLayout
+                    android:id="@+id/layout_timeslot"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#FFF5F5">
+
+                    <!-- 範例：5 節課 -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:text="節1"
+                        android:textSize="16sp"
+                        android:background="#FFE0E0" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:text="節2"
+                        android:textSize="16sp"
+                        android:background="#FFE0E0" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:text="節3"
+                        android:textSize="16sp"
+                        android:background="#FFE0E0" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:text="節4"
+                        android:textSize="16sp"
+                        android:background="#FFE0E0" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:text="節5"
+                        android:textSize="16sp"
+                        android:background="#FFE0E0" />
+                </LinearLayout>
+
+                <!-- 右側：7 天欄 -->
+                <LinearLayout
+                    android:id="@+id/layout_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- 週一 -->
+                    <LinearLayout
+                        android:id="@+id/day1_container"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#FFFFFF"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="周一"
+                            android:textSize="18sp"
+                            android:background="#FFE0E0" />
+
+                        <!-- 5 個時段區塊 -->
+                        <TextView
+                            android:id="@+id/day1_time1"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day1_time2"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day1_time3"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day1_time4"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day1_time5"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                    </LinearLayout>
+
+                    <!-- 週二 -->
+                    <LinearLayout
+                        android:id="@+id/day2_container"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#FFFFFF"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="周二"
+                            android:textSize="18sp"
+                            android:background="#FFE0E0" />
+
+                        <!-- 5 個時段區塊 -->
+                        <TextView
+                            android:id="@+id/day2_time1"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <!-- 重複 4 次 -->
+                        <TextView
+                            android:id="@+id/day2_time2"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day2_time3"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day2_time4"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day2_time5"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                    </LinearLayout>
+
+                    <!-- 週三 -->
+                    <LinearLayout
+                        android:id="@+id/day3_container"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#FFFFFF"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="周三"
+                            android:textSize="18sp"
+                            android:background="#FFE0E0" />
+
+                        <!-- 5 個時段區塊 -->
+                        <TextView
+                            android:id="@+id/day3_time1"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <!-- 重複 4 次 -->
+                        <TextView
+                            android:id="@+id/day3_time2"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day3_time3"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day3_time4"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day3_time5"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                    </LinearLayout>
+
+                    <!-- 週四 -->
+                    <LinearLayout
+                        android:id="@+id/day4_container"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#FFFFFF"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="周四"
+                            android:textSize="18sp"
+                            android:background="#FFE0E0" />
+
+                        <!-- 5 個時段區塊 -->
+                        <TextView
+                            android:id="@+id/day4_time1"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <!-- 重複 4 次 -->
+                        <TextView
+                            android:id="@+id/day4_time2"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day4_time3"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day4_time4"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day4_time5"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                    </LinearLayout>
+
+                    <!-- 週五 -->
+                    <LinearLayout
+                        android:id="@+id/day5_container"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#FFFFFF"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="周五"
+                            android:textSize="18sp"
+                            android:background="#FFE0E0" />
+
+                        <!-- 5 個時段區塊 -->
+                        <TextView
+                            android:id="@+id/day5_time1"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <!-- 重複 4 次 -->
+                        <TextView
+                            android:id="@+id/day5_time2"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day5_time3"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day5_time4"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day5_time5"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                    </LinearLayout>
+
+                    <!-- 週六 -->
+                    <LinearLayout
+                        android:id="@+id/day6_container"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#FFFFFF"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="周六"
+                            android:textSize="18sp"
+                            android:background="#FFE0E0" />
+
+                        <!-- 5 個時段區塊 -->
+                        <TextView
+                            android:id="@+id/day6_time1"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <!-- 重複 4 次 -->
+                        <TextView
+                            android:id="@+id/day6_time2"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day6_time3"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day6_time4"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day6_time5"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                    </LinearLayout>
+
+                    <!-- 週日 -->
+                    <LinearLayout
+                        android:id="@+id/day7_container"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#FFFFFF"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="周日"
+                            android:textSize="18sp"
+                            android:background="#FFE0E0" />
+
+                        <!-- 5 個時段區塊 -->
+                        <TextView
+                            android:id="@+id/day7_time1"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <!-- 重複 4 次 -->
+                        <TextView
+                            android:id="@+id/day7_time2"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day7_time3"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day7_time4"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                        <TextView
+                            android:id="@+id/day7_time5"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:text="(空)"
+                            android:textSize="16sp"
+                            android:background="#E0F0F0" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </HorizontalScrollView>
+
+    <!-- 浮動按鈕 (右下角) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:contentDescription="新增課程" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
